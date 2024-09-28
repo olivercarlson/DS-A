@@ -28,7 +28,7 @@ class Solution:
     
     # SOLUTION #2:
     # DFS in-order, does take advantage of the fact that input is sorted / BST.
-    # TC: O(N) worst case (where k == size largest element in tree), best case O(log N)  SC: O(H) for the call stack -- worst case SC: O(N) (skewed tree), O(log N) average/best case.
+    # TC: O(log N + k) ~= O(N) worst case (where k ~= N = size of tree), best case O(log N + k)  SC: O(H) for the call stack -- worst case SC: O(N) (skewed tree), O(log N) average/best case.
         def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
             ans = None
             self.k = k
