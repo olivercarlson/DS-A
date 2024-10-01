@@ -1,5 +1,5 @@
 class Solution:
-    # SOLUTION:
+    # SOLUTION: Sliding Window / Two Pointer
     # TC: O(N) iteration through s
     # SC: O(1) since maximum size of seen is: alphabet (upper + lower) + spaces + symbols = 52 + space + symbols ~= 65?
     def lengthOfLongestSubstring(self, s: str) -> int:
