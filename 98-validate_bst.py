@@ -17,10 +17,11 @@ class Solution:
         return self.validate(node.left, low, node.val) and self.validate(node.right, node.val, hi)
     
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        return self.validate(root,)
+        return self.validate(root)
     
-    # SOLUTION #2: DFS inorder traversal:
-    # TC/SC: O(N)
+    # SOLUTION #2: DFS inorder traversal by being sneaky.
+    # TC: O(N) -- must iterate through all nodes at least once.
+    # SC: O(N) -- call stack.
     def dfs(self, node: Optional[TreeNode]) -> bool:
         if not node:
             return True
