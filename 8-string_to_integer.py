@@ -31,4 +31,36 @@ class Solution:
             return -2 ** 31
 
         return ans
-    
+    # SOLUTION #2: cleaned up code based off of soln. sign usage and checking MUCH improved.
+    # TC: O(N) -- process all chars in s
+    # SC: O(1) -- never using intermediate str allows up to keep space usage minimal.
+    def myAtoi(self, s: str) -> int:
+        MAX_INT = pow(2,31) - 1
+        MIN_INT = -pow(2,31)
+
+
+        sign = 1
+        res = 0
+        idx = 0
+
+        # handle leading whitespace
+        while idx < len(s) and s[idx] == " ":
+          idx += 1
+
+        # handle sign
+        if idx < len(s) and s[idx] == "+":
+            sign = 1
+            idx += 1
+        elif idx < len(s) and s[idx] == "-":
+            sign = -1
+            idx += 1
+
+        # handle digits
+        while idx < len(s) and s[idx].isdigit():
+            digit = int(s[idx])
+            if res > MAX_INT // 10 or (res  == MAX_INT // 10 and digit > MAX_INT % 10):
+                return MAX_INT if sign == 1 else MIN_INT
+            res = 10 * res + digit
+            idx += 1
+
+        return sign * res
